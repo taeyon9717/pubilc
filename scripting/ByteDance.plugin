@@ -1,0 +1,26 @@
+#!name = 字节净化
+#!desc = 按域名精细拦截字节系广告（蛋花 / 番茄 / 头条 / 抖音内嵌），屏蔽开屏 / 激励 / 前贴片及埋点，兼容短剧播放。
+#!author = ByteValley（Loon 规则转换）
+#!icon = https://gitlab.com/lodepuly/iconlibrary/-/raw/main/App_icon/120px/DragonRead.png
+#!homepage = https://github.com/ByteValley/NetTool
+
+[Rule]
+# 逻辑：字节系域名后缀 AND 域名包含指定关键词；以下 18 条等价展开原 Egern 的 AND/OR 组合
+AND,((DOMAIN-SUFFIX,douyin.com),(DOMAIN-KEYWORD,-lf)),REJECT-DROP
+AND,((DOMAIN-SUFFIX,douyin.com),(DOMAIN-KEYWORD,-lq)),REJECT-DROP
+AND,((DOMAIN-SUFFIX,douyin.com),(DOMAIN-KEYWORD,-hl)),REJECT-DROP
+AND,((DOMAIN-SUFFIX,zijieapi.com),(DOMAIN-KEYWORD,-lf)),REJECT-DROP
+AND,((DOMAIN-SUFFIX,zijieapi.com),(DOMAIN-KEYWORD,-lq)),REJECT-DROP
+AND,((DOMAIN-SUFFIX,zijieapi.com),(DOMAIN-KEYWORD,-hl)),REJECT-DROP
+AND,((DOMAIN-SUFFIX,snssdk.com),(DOMAIN-KEYWORD,-lf)),REJECT-DROP
+AND,((DOMAIN-SUFFIX,snssdk.com),(DOMAIN-KEYWORD,-lq)),REJECT-DROP
+AND,((DOMAIN-SUFFIX,snssdk.com),(DOMAIN-KEYWORD,-hl)),REJECT-DROP
+AND,((DOMAIN-SUFFIX,toutiaoapi.com),(DOMAIN-KEYWORD,-lf)),REJECT-DROP
+AND,((DOMAIN-SUFFIX,toutiaoapi.com),(DOMAIN-KEYWORD,-lq)),REJECT-DROP
+AND,((DOMAIN-SUFFIX,toutiaoapi.com),(DOMAIN-KEYWORD,-hl)),REJECT-DROP
+AND,((DOMAIN-SUFFIX,fqnovel.com),(DOMAIN-KEYWORD,-lf)),REJECT-DROP
+AND,((DOMAIN-SUFFIX,fqnovel.com),(DOMAIN-KEYWORD,-lq)),REJECT-DROP
+AND,((DOMAIN-SUFFIX,fqnovel.com),(DOMAIN-KEYWORD,-hl)),REJECT-DROP
+AND,((DOMAIN-SUFFIX,fqnovelvod.com),(DOMAIN-KEYWORD,-lf)),REJECT-DROP
+AND,((DOMAIN-SUFFIX,fqnovelvod.com),(DOMAIN-KEYWORD,-lq)),REJECT-DROP
+AND,((DOMAIN-SUFFIX,fqnovelvod.com),(DOMAIN-KEYWORD,-hl)),REJECT-DROP
