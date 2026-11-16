@@ -1,27 +1,27 @@
 # ACS Publications / ACS Journals - Loon Rule Set
 # Updated: 2026-11-16
-# Route: 全球手动策略
+# Policy intentionally omitted: choose the policy manually in Loon.
 # Scope: ACS journal reading, article pages, Supporting Information, author resources and ACS sign-in/submission.
 # Note: Static rules cannot guarantee every third-party CDN/API endpoint. Add observed hosts from Loon request logs when necessary.
 
 # === Core: ACS Publications journal platform ===
-DOMAIN-SUFFIX,pubs.acs.org,全球手动策略
+DOMAIN-SUFFIX,pubs.acs.org
 
 # === Supporting Information (ACS Figshare) ===
-DOMAIN-SUFFIX,acs.figshare.com,全球手动策略
+DOMAIN-SUFFIX,acs.figshare.com
 
 # === ACS ID / login / manuscript submission ===
-DOMAIN-SUFFIX,publish.acs.org,全球手动策略
-DOMAIN-SUFFIX,acsparagonplus.acs.org,全球手动策略
-DOMAIN-SUFFIX,paragonplus.acs.org,全球手动策略
-DOMAIN-SUFFIX,pubsapp.acs.org,全球手动策略
-DOMAIN-SUFFIX,services.acs.org,全球手动策略
+DOMAIN-SUFFIX,publish.acs.org
+DOMAIN-SUFFIX,acsparagonplus.acs.org
+DOMAIN-SUFFIX,paragonplus.acs.org
+DOMAIN-SUFFIX,pubsapp.acs.org
+DOMAIN-SUFFIX,services.acs.org
 
 # === ACS author / researcher resources ===
-DOMAIN-SUFFIX,researcher-resources.acs.org,全球手动策略
+DOMAIN-SUFFIX,researcher-resources.acs.org
 
 # === Optional ACS editorial / publishing information ===
-DOMAIN-SUFFIX,axial.acs.org,全球手动策略
-DOMAIN,jpa.acs.org,全球手动策略
+DOMAIN-SUFFIX,axial.acs.org
+DOMAIN,jpa.acs.org
 
 # End of ACS Publications rules
