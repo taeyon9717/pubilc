@@ -1,0 +1,27 @@
+# ACS Publications / ACS Journals - Loon Rule Set
+# Updated: 2026-11-16
+# Route: 全球手动策略
+# Scope: ACS journal reading, article pages, Supporting Information, author resources and ACS sign-in/submission.
+# Note: Static rules cannot guarantee every third-party CDN/API endpoint. Add observed hosts from Loon request logs when necessary.
+
+# === Core: ACS Publications journal platform ===
+DOMAIN-SUFFIX,pubs.acs.org,全球手动策略
+
+# === Supporting Information (ACS Figshare) ===
+DOMAIN-SUFFIX,acs.figshare.com,全球手动策略
+
+# === ACS ID / login / manuscript submission ===
+DOMAIN-SUFFIX,publish.acs.org,全球手动策略
+DOMAIN-SUFFIX,acsparagonplus.acs.org,全球手动策略
+DOMAIN-SUFFIX,paragonplus.acs.org,全球手动策略
+DOMAIN-SUFFIX,pubsapp.acs.org,全球手动策略
+DOMAIN-SUFFIX,services.acs.org,全球手动策略
+
+# === ACS author / researcher resources ===
+DOMAIN-SUFFIX,researcher-resources.acs.org,全球手动策略
+
+# === Optional ACS editorial / publishing information ===
+DOMAIN-SUFFIX,axial.acs.org,全球手动策略
+DOMAIN,jpa.acs.org,全球手动策略
+
+# End of ACS Publications rules
