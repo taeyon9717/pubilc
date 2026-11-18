@@ -1,0 +1,10 @@
+#!name=GLaDOS 自动签到
+#!desc=每天 06:00 自动签到；使用指定正则匹配 GLaDOS 签到 API
+#!author=taeyon9717
+
+[Script]
+http-request ^https?:\\/\\/glados\\.[a-z]+\\/api\\/user\\/checkin script-path=https://raw.githubusercontent.com/taeyon9717/pubilc/main/scripting/GLaDOS.js, requires-body=false, timeout=10
+cron "0 6 * * *" script-path=https://raw.githubusercontent.com/taeyon9717/pubilc/main/scripting/GLaDOS.js, timeout=60
+
+[MITM]
+hostname = glados.cloud
