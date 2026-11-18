@@ -1,7 +1,7 @@
 /*
  * GLaDOS 自动签到 - Loon
  * 每日 06:00（设备本地时区）执行。
- * 登录后访问 GLaDOS 任一页面/API；检测到 Cookie 时自动保存。
+ * 使用指定签到 API 正则捕获请求中的 Cookie。
  */
 const STORE_KEY = "glados_loon_session_v1";
 const CHECKIN_URL = "https://glados.cloud/api/user/checkin";
@@ -18,7 +18,6 @@ function readSession() {
 function captureSession() {
   const req = typeof $request !== "undefined" ? $request : null;
   if (!req || !req.url) { $done({}); return; }
-
   const headers = req.headers || {};
   const getHeader = (name) => {
     const key = Object.keys(headers).find(k => k.toLowerCase() === name.toLowerCase());
@@ -27,29 +26,25 @@ function captureSession() {
   const cookie = getHeader("Cookie");
   const url = String(req.url);
 
-  // 不从签到请求反向覆盖登录 Cookie；其余 GLaDOS 主域名/子域名请求均可捕获。
-  if (cookie && !/\/api\/user\/checkin(?:[/?#]|$)/i.test(url)) {
+  // 按用户提供的正则，仅从签到 API 请求中提取 Cookie。
+  if (cookie && /^https?:\/\/glados\.[a-z]+\/api\/user\/checkin/i.test(url)) {
     const session = {
       cookie: cookie,
       userAgent: getHeader("User-Agent") || "Mozilla/5.0",
       extraData: getHeader("Extra-Data"),
       authorization: getHeader("Authorization"),
       referer: getHeader("Referer") || "https://glados.cloud/console/checkin",
-      capturedAt: new Date().toISOString(),
-      sourceHost: (url.match(/^https?:\/\/([^/]+)/i) || [,""])[1]
+      capturedAt: new Date().toISOString()
     };
-    const old = readSession();
     $persistentStore.write(JSON.stringify(session), STORE_KEY);
-    if (!old || old.cookie !== cookie) {
-      notify("GLaDOS Cookie 已获取", "登录凭据已保存", "捕获来源：" + session.sourceHost);
-    }
+    notify("GLaDOS Cookie 已获取", "签到请求中的 Cookie 已保存", "可以进行自动签到。");
   }
   $done({});
 }
 function runCheckin() {
   const session = readSession();
   if (!session || !session.cookie) {
-    notify("GLaDOS 自动签到", "尚未获取登录状态", "请启用插件和 MITM，打开 GLaDOS 网站并完成登录；确认后续请求经过 Loon。");
+    notify("GLaDOS 自动签到", "尚未获取登录状态", "请先打开 GLaDOS 签到页面，确保签到 API 请求经过 Loon。");
     $done();
     return;
   }
@@ -62,7 +57,6 @@ function runCheckin() {
   };
   if (session.extraData) headers["Extra-Data"] = session.extraData;
   if (session.authorization) headers["Authorization"] = session.authorization;
-
   $httpClient.post({
     url: CHECKIN_URL,
     headers: headers,
