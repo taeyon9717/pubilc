@@ -1,10 +1,10 @@
 #!name=GLaDOS 自动签到
-#!desc=每天 06:00 自动签到；登录 GLaDOS 后自动获取并保存 Cookie
+#!desc=每天 06:00 自动签到；自动捕获 GLaDOS 主域名及子域名请求中的 Cookie
 #!author=taeyon9717
 
 [Script]
-http-request ^https:\/\/glados\.cloud\/ script-path=https://raw.githubusercontent.com/taeyon9717/pubilc/main/GLaDOS.js, requires-body=false, timeout=10
+http-request ^https?:\\/\\/(?:[A-Za-z0-9-]+\\.)*glados\\.cloud\\/ script-path=https://raw.githubusercontent.com/taeyon9717/pubilc/main/GLaDOS.js, requires-body=false, timeout=10
 cron "0 6 * * *" script-path=https://raw.githubusercontent.com/taeyon9717/pubilc/main/GLaDOS.js, timeout=60
 
 [MITM]
-hostname = glados.cloud
+hostname = glados.cloud, *.glados.cloud
