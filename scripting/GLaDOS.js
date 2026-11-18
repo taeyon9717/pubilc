@@ -27,7 +27,7 @@ function captureSession() {
   const url = String(req.url);
 
   // 按用户提供的正则，仅从签到 API 请求中提取 Cookie。
-  if (cookie && /^https?:\\/\\/glados\\.[a-z]+\\/api\\/user\\/checkin/i.test(url)) {
+  if (cookie && /^https?:\/\/glados\.[a-z]+\/api\/user\/checkin/i.test(url)) {
     const session = {
       cookie: cookie,
       userAgent: getHeader("User-Agent") || "Mozilla/5.0",
