@@ -11,7 +11,7 @@
 # 不按查询参数中的关键词拦截，降低误伤正常文档请求的风险。
 
 [Rewrite]
-request reject-ads if ${url} ~= /^https?:\\/\\/docs\\.qq\\.com\\/(?:(?:[^\\/?#]+\\/)+ad\\/|api\\/advertise\\/)/ then reject(404)
+request reject-ads if ${url} ~= /^https?:\/\/docs\.qq\.com\/(?:(?:[^\/?#]+\/)+ad\/|api\/advertise\/)/ then reject(404)
 
 [Mitm]
 hostname = docs.qq.com
