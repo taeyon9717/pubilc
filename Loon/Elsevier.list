@@ -1,0 +1,7 @@
+# Elsevier / ScienceDirect - Loon Rule Set
+# Scope: Elsevier ID authentication.
+# Policy intentionally omitted: choose the policy manually in Loon.
+
+DOMAIN,id.elsevier.com
+
+# End of Elsevier rules
